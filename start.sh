@@ -8,5 +8,5 @@ else
 fi
 cd /dash-bot
 pip3 install -U -r requirements.txt
-echo "Starting Shortner_file...."
+echo "Starting dash-bot...."
 python3 bot.py
