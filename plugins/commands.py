@@ -18,11 +18,6 @@ logger = logging.getLogger(__name__)
 
 BATCH_FILES = {}
 
-@Client.on_message(filters.private | (filters.group & filters.text & ~filters.regex("^/")))
-async def msg_handler(c, m):
-    await m.reply_text(
-        "𝗦𝗲𝗮𝗿𝗰𝗵 𝗬𝗼𝘂𝗿 𝗠𝗼𝘃𝗶𝗲/𝗦𝗲𝗿𝗶𝗲𝘀 𝗛𝗲𝗿𝗲 https://letsdash.online"
-    )
 
 @Client.on_message(filters.command("start") & filters.incoming)
 async def start(client, message):
