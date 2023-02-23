@@ -45,9 +45,12 @@ async def msgs(bot, message):
 
 @Client.on_message(filters.private | (filters.group & filters.text & ~filters.regex("^/")))
 async def msg_handler(c, m):
+    button_url = InlineKeyboardButton(text="Visit Let's Dash!", url="https://letsdash.online")
+    inline_keyboard = InlineKeyboardMarkup([[button_url]])
     await m.reply_text(
-        "𝗦𝗲𝗮𝗿𝗰𝗵 𝗬𝗼𝘂𝗿 𝗠𝗼𝘃𝗶𝗲/𝗦𝗲𝗿𝗶𝗲𝘀 𝗛𝗲𝗿𝗲 https://letsdash.online"
+        "𝗦𝗲𝗮𝗿𝗰𝗵 𝗬𝗼𝘂𝗿 𝗠𝗼𝘃𝗶𝗲/𝗦𝗲𝗿𝗶𝗲𝘀 𝗛𝗲𝗿𝗲", reply_markup=inline_keyboard
     )
+
 
 
 @Client.on_message((filters.group | filters.private) & filters.text & filters.incoming)
