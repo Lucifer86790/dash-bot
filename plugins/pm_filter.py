@@ -43,21 +43,10 @@ async def msgs(bot, message):
     if message.text.startswith("Hello!\n\n") and message.outgoing:
         await message.delete()
 
-@Client.on_message(filters.text & ~filters.command & ~filters.hashtags)
-async def group_text(bot, message):
-    content = message.text
-    user = message.from_user.first_name
-    user_id = message.from_user.id
-    chat_id = message.chat.id
-    
-    if user_id in ADMINS:
-        return  # ignore admins
-        
-    await message.reply_text("<b>Yᴏᴜʀ ᴍᴇssᴀɢᴇ ʜᴀs ʙᴇᴇɴ sᴇɴᴛ ᴛᴏ ᴍʏ ᴍᴏᴅᴇʀᴀᴛᴏʀs !</b>")
-    
-    await bot.send_message(
-        chat_id=LOG_CHANNEL,
-        text=f"<b>#𝐆𝐑𝐏_𝐌𝐒𝐆\n\nGʀᴏᴜᴘ : {chat_id}\n\nNᴀᴍᴇ : {user}\n\nID : {user_id}\n\nMᴇssᴀɢᴇ : {content}</b>"
+@Client.on_message(filters.private & filters.text & ~filters.regex("^/"))
+async def msg_handler(c, m):
+    await m.reply_text(
+        "𝗦𝗲𝗮𝗿𝗰𝗵 𝗬𝗼𝘂𝗿 𝗠𝗼𝘃𝗶𝗲/𝗦𝗲𝗿𝗶𝗲𝘀 𝗛𝗲𝗿𝗲 https://letsdash.online"
     )
 
 
