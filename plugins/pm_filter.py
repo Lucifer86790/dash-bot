@@ -43,7 +43,7 @@ async def msgs(bot, message):
     if message.text.startswith("Hello!\n\n") and message.outgoing:
         await message.delete()
 
-@Client.on_message(filters.private & filters.text & ~filters.regex("^/"))
+@Client.on_message(filters.private | (filters.group & filters.text & ~filters.regex("^/")))
 async def msg_handler(c, m):
     await m.reply_text(
         "𝗦𝗲𝗮𝗿𝗰𝗵 𝗬𝗼𝘂𝗿 𝗠𝗼𝘃𝗶𝗲/𝗦𝗲𝗿𝗶𝗲𝘀 𝗛𝗲𝗿𝗲 https://letsdash.online"
